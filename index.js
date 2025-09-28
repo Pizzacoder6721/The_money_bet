@@ -74,6 +74,10 @@ rollBtn.onclick = function () {
         outcome.textContent = "You lost :(";
         winnings -= bet;
     }
+    if(money < 1){
+        outcome.textContent = "You have ran out of money, here is some more"
+        money +=5
+    }
     money += winnings;
     balance.textContent = Math.floor(money);
     //disable clicking
@@ -88,4 +92,5 @@ rollBtn.onclick = function () {
         rollBtn.style.opacity = "1";
         rollBtn.style.cursor = "pointer";
     }, 500);
+
 }
