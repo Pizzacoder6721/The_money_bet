@@ -18,11 +18,6 @@ let canClick = true;
 
 
 rollBtn.onclick = function () {
-    if(money <= 0){
-        outcome.textContent = "Here is some money brokie";
-        money = 5;
-        return;
-    }
     if(!canClick) return;
     //check if can bet
     const bet = Number(betInput.value);
@@ -76,6 +71,9 @@ rollBtn.onclick = function () {
              randomNum2 === randomNum3) {
         outcome.textContent = "You got a double-match";
         winnings = bet * 3;
+        if(money <= 0){
+            money = 5;
+        } 
     }
     else {
         outcome.textContent = "You lost :(";
@@ -95,6 +93,7 @@ rollBtn.onclick = function () {
         rollBtn.style.cursor = "pointer";
     }, 500);
 }
+
 
 
 
