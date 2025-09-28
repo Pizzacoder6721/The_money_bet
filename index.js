@@ -20,7 +20,8 @@ let canClick = true;
 rollBtn.onclick = function () {
     if(money <= 0){
         outcome.textContent = "Here is some money brokie";
-        money = 5
+        money = 5;
+        return;
     }
     if(!canClick) return;
     //check if can bet
@@ -94,6 +95,7 @@ rollBtn.onclick = function () {
         rollBtn.style.cursor = "pointer";
     }, 500);
 }
+
 
 
 
