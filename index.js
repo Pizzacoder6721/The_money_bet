@@ -15,6 +15,11 @@ let randomNum3;
 
 let canClick = true;
 
+if(money <= 0){
+    outcome.textContent = "Here is some money brokie";
+    money += 50
+}
+
 rollBtn.onclick = function () {
     if(!canClick) return;
     //check if can bet
@@ -88,8 +93,4 @@ rollBtn.onclick = function () {
         rollBtn.style.opacity = "1";
         rollBtn.style.cursor = "pointer";
     }, 500);
-}
-if(money <= 0){
-    outcome.textContent = "Here is some more money brokie."
-    money += 5
 }
