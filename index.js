@@ -77,6 +77,11 @@ rollBtn.onclick = function () {
     }
     money += winnings;
     balance.textContent = Math.floor(money);
+    if (money === 0) {
+    outcome.textContent = "You're out of money brokie, here is some of mine.";
+    money = 5;
+    balance.textContent = money;
+    }
     //disable clicking
     canClick = false;
     rollBtn.disabled = true;
@@ -90,3 +95,4 @@ rollBtn.onclick = function () {
         rollBtn.style.cursor = "pointer";
     }, 500);
 }
+
