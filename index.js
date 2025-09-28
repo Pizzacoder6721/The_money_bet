@@ -100,8 +100,3 @@ rollBtn.onclick = function () {
         rollBtn.style.cursor = "pointer";
     }, 500);
 }
-
-
-
-
-
