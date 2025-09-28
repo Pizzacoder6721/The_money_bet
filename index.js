@@ -15,7 +15,7 @@ let randomNum3;
 
 let canClick = true;
 
-
+let loancount = 0;
 
 rollBtn.onclick = function () {
     if(!canClick) return;
@@ -79,8 +79,12 @@ rollBtn.onclick = function () {
     balance.textContent = Math.floor(money);
     if (money === 0) {
     outcome.textContent = "You're out of money brokie, here is some of mine.";
+    loancount +=
     money = 5;
     balance.textContent = money;
+    if (loancount === 20){
+        outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
+        money = -10000000000000000000000000;
     }
     //disable clicking
     canClick = false;
@@ -95,4 +99,5 @@ rollBtn.onclick = function () {
         rollBtn.style.cursor = "pointer";
     }, 500);
 }
+
 
