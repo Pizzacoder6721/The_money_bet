@@ -78,7 +78,6 @@ rollBtn.onclick = function () {
     }
     else {
         outcome.textContent = "You lost :(";
-        winnings -= bet;
     }
     money += winnings;
     balance.textContent = Math.floor(money);
@@ -95,4 +94,5 @@ rollBtn.onclick = function () {
         rollBtn.style.cursor = "pointer";
     }, 500);
 }
+
 
