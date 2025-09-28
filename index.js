@@ -79,9 +79,10 @@ rollBtn.onclick = function () {
     balance.textContent = Math.floor(money);
     if (money === 0) {
     outcome.textContent = "You're out of money brokie, here is some of mine.";
-    loancount +=
+    loancount += 1
     money = 5;
     balance.textContent = money;
+    }
     if (loancount === 3){
         outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
         money = -10000;
@@ -99,6 +100,7 @@ rollBtn.onclick = function () {
         rollBtn.style.cursor = "pointer";
     }, 500);
 }
+
 
 
 
