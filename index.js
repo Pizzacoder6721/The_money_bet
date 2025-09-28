@@ -82,7 +82,7 @@ rollBtn.onclick = function () {
     loancount +=
     money = 5;
     balance.textContent = money;
-    if (loancount === 20){
+    if (loancount === 3){
         outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
         money = -10000000000000000000000000;
     }
@@ -99,5 +99,6 @@ rollBtn.onclick = function () {
         rollBtn.style.cursor = "pointer";
     }, 500);
 }
+
 
 
