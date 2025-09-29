@@ -22,7 +22,7 @@ function startSpin(label, delay, onStop) {
         label.textContent = spinNum;
         label.style.border = "3px solid black";
         count++;
-    }, 15);
+    }, 50);
 
     // Stop after the delay
     setTimeout(() => {
@@ -118,9 +118,10 @@ rollBtn.onclick = function () {
     }
 
     // Start spinning one by one
-    startSpin(numLabel1, 1000, onFinalNumber);
-    startSpin(numLabel2, 1300, onFinalNumber);
-    startSpin(numLabel3, 1600, onFinalNumber);
+    startSpin(numLabel1, 300, onFinalNumber);
+    startSpin(numLabel2, 600, onFinalNumber);
+    startSpin(numLabel3, 800, onFinalNumber);
 };
+
 
 
