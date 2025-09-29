@@ -117,8 +117,9 @@ rollBtn.onclick = function () {
         }
     }
 
-    // Start spinning with staggered delays
-    startSpin(numLabel1, 1000, onFinalNumber);
-    startSpin(numLabel2, 1300, onFinalNumber);
-    startSpin(numLabel3, 1600, onFinalNumber);
+    // Start spinning one by one
+    startSpin(numLabel1, 600, onFinalNumber);
+    startSpin(numLabel2, 800, onFinalNumber);
+    startSpin(numLabel3, 1000, onFinalNumber);
 };
+
