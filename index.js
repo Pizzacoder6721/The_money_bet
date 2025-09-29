@@ -110,7 +110,7 @@ rollBtn.onclick = function () {
 
             if (betAmount === 20) {
                 outcome.textContent = "67 67 67 67 67 67 67"
-                wingings = bet * 67;
+                winnings = bet * 67;
                 balance.textContent = money;
             }
 
