@@ -15,7 +15,8 @@ let loancount = 0;
 const min = 1;
 const max = 7;
 
-function startSpin(label, delay, onStop) {
+// Spins a label a specific number of times
+function startSpin(label, spinCountLimit, delay, onStop) {
     let spins = 0;
     let interval = setInterval(() => {
         const spinNum = Math.floor(Math.random() * (max - min)) + min;
@@ -29,16 +30,7 @@ function startSpin(label, delay, onStop) {
             label.textContent = finalNum;
             onStop(finalNum);
         }
-    }, 50); // Update speed
-}
-
-    // Stop after the delay
-    setTimeout(() => {
-        clearInterval(interval);
-        const finalNum = Math.floor(Math.random() * (max - min + 1)) + min;
-        label.textContent = finalNum;
-        onStop(finalNum);
-    }, delay);
+    }, delay); // How fast the number changes (lower = faster)
 }
 
 rollBtn.onclick = function () {
@@ -50,6 +42,7 @@ rollBtn.onclick = function () {
         outcome.textContent = "Enter a valid bet amount.";
         return;
     }
+
     if (bet > money) {
         outcome.textContent = "You do not have that much money";
         return;
@@ -115,7 +108,7 @@ rollBtn.onclick = function () {
                 balance.textContent = money;
             }
 
-            // Re-enable button after all spins
+            // Re-enable button
             setTimeout(() => {
                 canClick = true;
                 rollBtn.disabled = false;
@@ -125,12 +118,8 @@ rollBtn.onclick = function () {
         }
     }
 
-    // Start spinning one by one
-    startSpin(numLabel1, 10, onFinalNumber);
-    startSpin(numLabel2, 12, onFinalNumber);
-    startSpin(numLabel3, 14, onFinalNumber);
+    // Start spinning each label with a specific spin count and speed
+    startSpin(numLabel1, 10, 50, onFinalNumber); // 10 spins, 50ms delay
+    startSpin(numLabel2, 12, 50, onFinalNumber); // 12 spins, 50ms delay
+    startSpin(numLabel3, 14, 50, onFinalNumber); // 14 spins, 50ms delay
 };
-
-
-
-
