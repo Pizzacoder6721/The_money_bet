@@ -54,7 +54,7 @@ rollBtn.onclick = function () {
         money *= 67;
         balance.textContent = Math.floor(money);
         outcome.textContent = "67 67 67 67 67 67";
-        67 = false;
+        can67 = false;
         return;
     }
 
