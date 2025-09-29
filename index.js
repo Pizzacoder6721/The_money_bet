@@ -15,6 +15,8 @@ let loancount = 0;
 const min = 1;
 const max = 7;
 
+let 67 = true;
+
 // Spins a label a specific number of times
 function startSpin(label, spinCountLimit, delay, onStop) {
     let spins = 0;
@@ -48,10 +50,11 @@ rollBtn.onclick = function () {
         return;
     }
 
-    if (bet === 67) {
+    if (bet === 67 && 67 == true) {
         money *= 67;
         balance.textContent = Math.floor(money);
         outcome.textContent = "67 67 67 67 67 67";
+        67 = false;
         return;
     }
 
@@ -132,6 +135,7 @@ rollBtn.onclick = function () {
     startSpin(numLabel2, 16, 67, onFinalNumber); // 12 spins, 50ms delay
     startSpin(numLabel3, 22, 67, onFinalNumber); // 14 spins, 50ms delay
 };
+
 
 
 
