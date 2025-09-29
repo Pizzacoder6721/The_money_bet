@@ -16,13 +16,21 @@ const min = 1;
 const max = 7;
 
 function startSpin(label, delay, onStop) {
-    let count = 0;
+    let spins = 0;
     let interval = setInterval(() => {
         const spinNum = Math.floor(Math.random() * (max - min)) + min;
         label.textContent = spinNum;
         label.style.border = "3px solid black";
-        count++;
-    }, 50);
+        spins++;
+
+        if (spins >= spinCountLimit) {
+            clearInterval(interval);
+            const finalNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            label.textContent = finalNum;
+            onStop(finalNum);
+        }
+    }, 50); // Update speed
+}
 
     // Stop after the delay
     setTimeout(() => {
@@ -118,10 +126,11 @@ rollBtn.onclick = function () {
     }
 
     // Start spinning one by one
-    startSpin(numLabel1, 300, onFinalNumber);
-    startSpin(numLabel2, 600, onFinalNumber);
-    startSpin(numLabel3, 800, onFinalNumber);
+    startSpin(numLabel1, 10, onFinalNumber);
+    startSpin(numLabel2, 12, onFinalNumber);
+    startSpin(numLabel3, 14, onFinalNumber);
 };
+
 
 
 
