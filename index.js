@@ -6,7 +6,7 @@ const balance = document.getElementById("balance");
 const betInput = document.getElementById("betAmount");
 const outcome = document.getElementById("outcome");
 
-let money = 50;
+let money = 100;
 balance.textContent = money;
 
 let canClick = true;
@@ -119,7 +119,7 @@ rollBtn.onclick = function () {
     }
 
     // Start spinning each label with a specific spin count and speed
-    startSpin(numLabel1, 10, 50, onFinalNumber); // 10 spins, 50ms delay
-    startSpin(numLabel2, 12, 50, onFinalNumber); // 12 spins, 50ms delay
-    startSpin(numLabel3, 14, 50, onFinalNumber); // 14 spins, 50ms delay
+    startSpin(numLabel1, 10, 75, onFinalNumber); // 10 spins, 50ms delay
+    startSpin(numLabel2, 13, 75, onFinalNumber); // 12 spins, 50ms delay
+    startSpin(numLabel3, 16, 75, onFinalNumber); // 14 spins, 50ms delay
 };
