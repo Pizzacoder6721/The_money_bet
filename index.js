@@ -1,3 +1,38 @@
+const rollBtn = document.getElementById("rollBtn");
+const numLabel1 = document.getElementById("numLabel1");
+const numLabel2 = document.getElementById("numLabel2");
+const numLabel3 = document.getElementById("numLabel3");
+const balance = document.getElementById("balance");
+const betInput = document.getElementById("betAmount");
+const outcome = document.getElementById("outcome");
+
+let money = 50;
+balance.textContent = money;
+
+let canClick = true;
+let loancount = 0;
+
+const min = 1;
+const max = 7;
+
+function startSpin(label, delay, onStop) {
+    let count = 0;
+    let interval = setInterval(() => {
+        const spinNum = Math.floor(Math.random() * (max - min)) + min;
+        label.textContent = spinNum;
+        label.style.border = "3px solid black";
+        count++;
+    }, 50);
+
+    // Stop after the delay
+    setTimeout(() => {
+        clearInterval(interval);
+        const finalNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        label.textContent = finalNum;
+        onStop(finalNum);
+    }, delay);
+}
+
 rollBtn.onclick = function () {
     if (!canClick) return;
 
@@ -19,45 +54,17 @@ rollBtn.onclick = function () {
 
     money -= bet;
     balance.textContent = money;
-
-    outcome.textContent = ""; // Clear old result
+    outcome.textContent = "";
 
     let spinCount = 0;
-    let spinIntervals = [];
-
-    // Create a spinning effect for each slot
-    function startSpin(label, delay, onStop) {
-        let count = 0;
-        let interval = setInterval(() => {
-            const spinNum = Math.floor(Math.random() * (max - min)) + min;
-            label.textContent = spinNum;
-            label.style.border = "3px solid black";
-            count++;
-        }, 50);
-
-        spinIntervals.push(interval);
-
-        // Stop the spin after some time
-        setTimeout(() => {
-            clearInterval(interval);
-            const finalNum = Math.floor(Math.random() * (max - min + 1)) + min;
-            label.textContent = finalNum;
-            onStop(finalNum);
-        }, delay);
-    }
-
     let finalNumbers = [];
 
     function onFinalNumber(num) {
         finalNumbers.push(num);
         spinCount++;
-        if (spinCount === 3) {
-            // All slots finished spinning
-            const [n1, n2, n3] = finalNumbers;
-            randomNum1 = n1;
-            randomNum2 = n2;
-            randomNum3 = n3;
 
+        if (spinCount === 3) {
+            const [n1, n2, n3] = finalNumbers;
             let winnings = 0;
 
             if (n1 === 7 && n2 === 7 && n3 === 7) {
@@ -100,7 +107,7 @@ rollBtn.onclick = function () {
                 balance.textContent = money;
             }
 
-            // Re-enable button
+            // Re-enable button after all spins
             setTimeout(() => {
                 canClick = true;
                 rollBtn.disabled = false;
@@ -110,8 +117,8 @@ rollBtn.onclick = function () {
         }
     }
 
-    // Start the slot spins with staggered delays
-    startSpin(numLabel1, 1000, onFinalNumber); // stops after 1s
-    startSpin(numLabel2, 1300, onFinalNumber); // stops after 1.3s
-    startSpin(numLabel3, 1600, onFinalNumber); // stops after 1.6s
+    // Start spinning with staggered delays
+    startSpin(numLabel1, 1000, onFinalNumber);
+    startSpin(numLabel2, 1300, onFinalNumber);
+    startSpin(numLabel3, 1600, onFinalNumber);
 };
