@@ -1,107 +1,117 @@
-const rollBtn = document.getElementById("rollBtn");
-const numLabel1 = document.getElementById("numLabel1");
-const numLabel2 = document.getElementById("numLabel2");
-const numLabel3 = document.getElementById("numLabel3");
-let balance = document.getElementById("balance");
-let betInput = document.getElementById("betAmount")
-let money = Number(50);
-balance.textContent = money;
-let outcome = document.getElementById("outcome");
-const min = 1;
-const max = 7;
-let randomNum1;
-let randomNum2;
-let randomNum3;
-
-let canClick = true;
-
-let loancount = 0;
-
 rollBtn.onclick = function () {
-    if(!canClick) return;
-    //check if can bet
+    if (!canClick) return;
+
     const bet = Number(betInput.value);
 
     if (isNaN(bet) || bet <= 0) {
         outcome.textContent = "Enter a valid bet amount.";
         return;
     }
-    if(bet > money){
-        outcome.textContent = "You do not have that much money"
+    if (bet > money) {
+        outcome.textContent = "You do not have that much money";
         return;
     }
-    money -= bet;
 
-    // random numbers
-    randomNum1 = Math.floor(Math.random() * max) + min;
-    randomNum2 = Math.floor(Math.random() * max) + min;
-    randomNum3 = Math.floor(Math.random() * max) + min;
-    //display random numbers
-    numLabel1.textContent = randomNum1;
-    numLabel2.textContent = randomNum2;
-    numLabel3.textContent = randomNum3;
-    //display borders for numbers
-    numLabel1.style.border = "3px solid black";
-    numLabel2.style.border = "3px solid black";
-    numLabel3.style.border = "3px solid black";
-
-    //set winnings variable
-
-    let winnings = 0;
-
-    //find if numbers same
-    if (randomNum1 === 7 && randomNum2 === 7 && randomNum3 === 7) {
-    outcome.textContent = "You got jackpot!!!";
-    winnings = bet * 25;
-    }
-    else if (
-        (randomNum1 === 7 && randomNum2 === 7 && randomNum3 !== 7) ||
-        (randomNum1 === 7 && randomNum3 === 7 && randomNum2 !== 7) ||
-        (randomNum2 === 7 && randomNum3 === 7 && randomNum1 !== 7)
-    ) {
-        outcome.textContent = "You got double sevens!";
-        winnings = bet * 8;
-    }
-    else if (randomNum1 === randomNum2 && randomNum2 === randomNum3) {
-        outcome.textContent = "You got a triple-match!";
-        winnings = bet * 8;
-    }
-    else if (randomNum1 === randomNum2 ||
-             randomNum1 === randomNum3 ||
-             randomNum2 === randomNum3) {
-        outcome.textContent = "You got a double-match";
-        winnings = bet * 3;
-    }
-    else {
-        outcome.textContent = "You lost :(";
-    }
-    money += winnings;
-    balance.textContent = Math.floor(money);
-    if (money === 0) {
-    outcome.textContent = "You're out of money brokie, here is some of mine.";
-    loancount += 1
-    money = 5;
-    balance.textContent = money;
-    }
-    if (loancount === 20){
-        outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
-        money = -999999999999999;
-        balance.textContent = money;
-    }
-    //disable clicking
     canClick = false;
     rollBtn.disabled = true;
     rollBtn.style.opacity = "0.5";
     rollBtn.style.cursor = "not-allowed";
-    //enable clicking
-    setTimeout(() => {
-        canClick = true;
-        rollBtn.disabled = false
-        rollBtn.style.opacity = "1";
-        rollBtn.style.cursor = "pointer";
-    }, 500);
-}
 
+    money -= bet;
+    balance.textContent = money;
 
+    outcome.textContent = ""; // Clear old result
 
+    let spinCount = 0;
+    let spinIntervals = [];
 
+    // Create a spinning effect for each slot
+    function startSpin(label, delay, onStop) {
+        let count = 0;
+        let interval = setInterval(() => {
+            const spinNum = Math.floor(Math.random() * (max - min)) + min;
+            label.textContent = spinNum;
+            label.style.border = "3px solid black";
+            count++;
+        }, 50);
+
+        spinIntervals.push(interval);
+
+        // Stop the spin after some time
+        setTimeout(() => {
+            clearInterval(interval);
+            const finalNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            label.textContent = finalNum;
+            onStop(finalNum);
+        }, delay);
+    }
+
+    let finalNumbers = [];
+
+    function onFinalNumber(num) {
+        finalNumbers.push(num);
+        spinCount++;
+        if (spinCount === 3) {
+            // All slots finished spinning
+            const [n1, n2, n3] = finalNumbers;
+            randomNum1 = n1;
+            randomNum2 = n2;
+            randomNum3 = n3;
+
+            let winnings = 0;
+
+            if (n1 === 7 && n2 === 7 && n3 === 7) {
+                outcome.textContent = "You got jackpot!!!";
+                winnings = bet * 25;
+            }
+            else if (
+                (n1 === 7 && n2 === 7 && n3 !== 7) ||
+                (n1 === 7 && n3 === 7 && n2 !== 7) ||
+                (n2 === 7 && n3 === 7 && n1 !== 7)
+            ) {
+                outcome.textContent = "You got double sevens!";
+                winnings = bet * 8;
+            }
+            else if (n1 === n2 && n2 === n3) {
+                outcome.textContent = "You got a triple-match!";
+                winnings = bet * 8;
+            }
+            else if (n1 === n2 || n1 === n3 || n2 === n3) {
+                outcome.textContent = "You got a double-match";
+                winnings = bet * 3;
+            }
+            else {
+                outcome.textContent = "You lost :(";
+            }
+
+            money += winnings;
+            balance.textContent = Math.floor(money);
+
+            if (money === 0) {
+                outcome.textContent = "You're out of money brokie, here is some of mine.";
+                loancount += 1;
+                money = 5;
+                balance.textContent = money;
+            }
+
+            if (loancount === 20) {
+                outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
+                money = -999999999999999;
+                balance.textContent = money;
+            }
+
+            // Re-enable button
+            setTimeout(() => {
+                canClick = true;
+                rollBtn.disabled = false;
+                rollBtn.style.opacity = "1";
+                rollBtn.style.cursor = "pointer";
+            }, 500);
+        }
+    }
+
+    // Start the slot spins with staggered delays
+    startSpin(numLabel1, 1000, onFinalNumber); // stops after 1s
+    startSpin(numLabel2, 1300, onFinalNumber); // stops after 1.3s
+    startSpin(numLabel3, 1600, onFinalNumber); // stops after 1.6s
+};
