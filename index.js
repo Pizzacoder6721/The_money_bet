@@ -57,6 +57,11 @@ rollBtn.onclick = function () {
     balance.textContent = money;
     outcome.textContent = "";
 
+    if (betAmount === 20) {
+        outcome.textContent = "67 67 67 67 67 67 67"
+        money *= 67;
+        balance.textContent = money;
+    }
     let spinCount = 0;
     let finalNumbers = [];
 
@@ -108,11 +113,7 @@ rollBtn.onclick = function () {
                 balance.textContent = money;
             }
 
-            if (betAmount === 20) {
-                outcome.textContent = "67 67 67 67 67 67 67"
-                winnings = bet * 67;
-                balance.textContent = money;
-            }
+            
 
             // Re-enable button
             setTimeout(() => {
@@ -129,5 +130,6 @@ rollBtn.onclick = function () {
     startSpin(numLabel2, 16, 67, onFinalNumber); // 12 spins, 50ms delay
     startSpin(numLabel3, 22, 67, onFinalNumber); // 14 spins, 50ms delay
 };
+
 
 
