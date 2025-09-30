@@ -41,12 +41,13 @@ rollBtn.onclick = function () {
     const bet = Number(betInput.value);
 
     if (isNaN(bet) || bet <= 0) {
-        outcome.textContent = "Enter a valid bet amount.";
+        outcome.textContent = "You tryna steal my money?";
+        money = 1;
         return;
     }
 
     if (bet > money) {
-        outcome.textContent = "You do not have that much money";
+        outcome.textContent = "You do not have that much money.";
         return;
     }
 
@@ -131,17 +132,18 @@ rollBtn.onclick = function () {
     }
 
     // Start spinning each label with a specific spin count and speed
-    startSpin(numLabel1, 10, 67, onFinalNumber); // 10 spins, 50ms delay
-    startSpin(numLabel2, 16, 67, onFinalNumber); // 12 spins, 50ms delay
-    startSpin(numLabel3, 22, 67, onFinalNumber); // 14 spins, 50ms delay
+    startSpin(numLabel1, 10, 67, onFinalNumber);
+    startSpin(numLabel2, 15, 67, onFinalNumber);
+    startSpin(numLabel3, 20, 67, onFinalNumber);
 };
 const coinFlipBtn = document.getElementById("coinFlipBtn");
 
 coinFlipBtn.onclick = function () {
     if (!canClick) return;
-    
+
     if (money <= 0) {
-        outcome.textContent = "You don't have that money. Did you thin I'm dumb?";
+        outcome.textContent = "You tryin to pull a fast one, you'll pay for that.";
+        money = 1;
         return;
     }
 
@@ -150,18 +152,31 @@ coinFlipBtn.onclick = function () {
     coinFlipBtn.style.opacity = "0.5";
     coinFlipBtn.style.cursor = "not-allowed";
 
-    let coinBet = money;
-    outcome.textContent = "Flipping the coin...";
+    let allInBet = money;
+    let flipOptions = ["Heads", "Tails"];
+    let flipIndex = 0;
 
+    // Start cycling text (Heads ↔ Tails)
+    const flipInterval = setInterval(() => {
+        outcome.textContent = flipOptions[flipIndex % 2];
+        flipIndex++;
+    }, 100); // Switch every 100ms
+
+    // Stop after some time and decide the result
     setTimeout(() => {
-        const result = Math.random() < 0.5 ? "lose" : "win";
+        clearInterval(flipInterval);
 
-        if (result === "win") {
-            money += coinBet;
-            outcome.textContent = `You won the coin flip! You now have ${money}`;
+        // Final result: 50/50
+        const isWin = Math.random() < 0.5;
+        const finalResult = isWin ? "Heads" : "Tails";
+        outcome.textContent = `It landed on ${finalResult}!`;
+
+        if (isWin) {
+            money += allInBet;
+            outcome.textContent += ` You won the coin flip! You now have ${money}`;
         } else {
             money = 0;
-            outcome.textContent = "You lost the coin flip. Womp Womp";
+            outcome.textContent += " You lost the coin flip. Womp Womp";
         }
 
         balance.textContent = Math.floor(money);
@@ -172,17 +187,19 @@ coinFlipBtn.onclick = function () {
                 outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
                 money = -999999999999999;
             } else {
-                outcome.textContent += " Here is some money brokie.";
+                outcome.textContent += " Here's some money brokie..";
                 money = 5;
             }
             balance.textContent = money;
         }
 
+        // Re-enable the button
         setTimeout(() => {
             canClick = true;
             coinFlipBtn.disabled = false;
             coinFlipBtn.style.opacity = "1";
             coinFlipBtn.style.cursor = "pointer";
         }, 500);
-    }, 1000);
+
+    }, 2000); // Flip for 2 seconds before revealing
 };
