@@ -135,9 +135,3 @@ rollBtn.onclick = function () {
     startSpin(numLabel2, 16, 67, onFinalNumber); // 12 spins, 50ms delay
     startSpin(numLabel3, 22, 67, onFinalNumber); // 14 spins, 50ms delay
 };
-
-
-
-
-
-
