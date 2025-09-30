@@ -133,6 +133,7 @@ rollBtn.onclick = function () {
     startSpin(numLabel1, 10, 67, onFinalNumber);
     startSpin(numLabel2, 15, 67, onFinalNumber);
     startSpin(numLabel3, 20, 67, onFinalNumber);
+    console.log(loancount);
 };
 const coinFlipBtn = document.getElementById("coinFlipBtn");
 
@@ -198,6 +199,8 @@ coinFlipBtn.onclick = function () {
             coinFlipBtn.style.cursor = "pointer";
         }, 500);
 
-    }, 2000); // Flip for 2 seconds before revealing
+    }, 2000);
+    console.log(loancount);
 };
+
 
