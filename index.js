@@ -43,6 +43,7 @@ rollBtn.onclick = function () {
     if (isNaN(bet) || bet <= 0) {
         outcome.textContent = "You tryna steal my money?";
         money = 1;
+        balance.textContent = money;
         return;
     }
 
@@ -144,6 +145,7 @@ coinFlipBtn.onclick = function () {
     if (money <= 0) {
         outcome.textContent = "You tryin to pull a fast one, you'll pay for that.";
         money = 1;
+        balance.textContent = money;
         return;
     }
 
@@ -176,7 +178,7 @@ coinFlipBtn.onclick = function () {
             outcome.textContent += ` You won the coin flip! You now have ${money}`;
         } else {
             money = 0;
-            outcome.textContent += " You lost the coin flip. Womp Womp";
+            outcome.textContent += " You lost the coin flip. Womp Womp.";
         }
 
         balance.textContent = Math.floor(money);
@@ -187,7 +189,7 @@ coinFlipBtn.onclick = function () {
                 outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
                 money = -999999999999999;
             } else {
-                outcome.textContent += " Here's some money brokie..";
+                outcome.textContent += " Here's some money brokie.";
                 money = 5;
             }
             balance.textContent = money;
@@ -203,3 +205,4 @@ coinFlipBtn.onclick = function () {
 
     }, 2000); // Flip for 2 seconds before revealing
 };
+
