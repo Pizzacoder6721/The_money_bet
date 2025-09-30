@@ -135,3 +135,54 @@ rollBtn.onclick = function () {
     startSpin(numLabel2, 16, 67, onFinalNumber); // 12 spins, 50ms delay
     startSpin(numLabel3, 22, 67, onFinalNumber); // 14 spins, 50ms delay
 };
+const coinFlipBtn = document.getElementById("coinFlipBtn");
+
+coinFlipBtn.onclick = function () {
+    if (!canClick) return;
+    
+    if (money <= 0) {
+        outcome.textContent = "You don't have that money. Did you thin I'm dumb?";
+        return;
+    }
+
+    canClick = false;
+    coinFlipBtn.disabled = true;
+    coinFlipBtn.style.opacity = "0.5";
+    coinFlipBtn.style.cursor = "not-allowed";
+
+    let coinBet = money;
+    outcome.textContent = "Flipping the coin...";
+
+    setTimeout(() => {
+        const result = Math.random() < 0.5 ? "lose" : "win";
+
+        if (result === "win") {
+            money += coinBet;
+            outcome.textContent = `You won the coin flip! You now have ${money}`;
+        } else {
+            money = 0;
+            outcome.textContent = "You lost the coin flip. Womp Womp";
+        }
+
+        balance.textContent = Math.floor(money);
+
+        if (money === 0) {
+            loancount += 1;
+            if (loancount >= 20) {
+                outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
+                money = -999999999999999;
+            } else {
+                outcome.textContent += " Here is some money brokie.";
+                money = 5;
+            }
+            balance.textContent = money;
+        }
+
+        setTimeout(() => {
+            canClick = true;
+            coinFlipBtn.disabled = false;
+            coinFlipBtn.style.opacity = "1";
+            coinFlipBtn.style.cursor = "pointer";
+        }, 500);
+    }, 1000);
+};
