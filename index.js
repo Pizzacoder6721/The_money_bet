@@ -112,12 +112,14 @@ rollBtn.onclick = function () {
                 loancount += 1;
                 money = 5;
                 balance.textContent = money;
+                console.log(loancount);
             }
 
             if (loancount === 20) {
                 outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
                 money = -999999999999999;
                 balance.textContent = money;
+                console.log(loancount);
             }
 
             setTimeout(() => {
@@ -184,9 +186,11 @@ coinFlipBtn.onclick = function () {
             if (loancount >= 20) {
                 outcome.textContent = "STOP TAKING MY MONEY!!!!! I'VE LENT YOU MONEY 20 TIMES!!!!!";
                 money = -999999999999999;
+                console.log(loancount);
             } else {
                 outcome.textContent += " Here's some money brokie.";
                 money = 5;
+                console.log(loancount);
             }
             balance.textContent = money;
         }
@@ -200,7 +204,7 @@ coinFlipBtn.onclick = function () {
         }, 500);
 
     }, 2000);
-    console.log(loancount);
 };
+
 
 
