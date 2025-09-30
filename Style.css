@@ -23,4 +23,12 @@ body{
     padding: 2px;
     width: 80px;
     text-align: center;
+
+}
+#coinFlipBtn {
+    background-color: hsl(0, 0%, 76%);
+    font-size: 2em;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
