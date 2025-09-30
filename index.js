@@ -170,10 +170,10 @@ coinFlipBtn.onclick = function () {
 
         if (isWin) {
             money += allInBet;
-            outcome.textContent += ` You won the coin flip! You now have ${money}`;
+            outcome.textContent += ` You won the coin flip!`;
         } else {
             money = 0;
-            outcome.textContent += " You lost the coin flip. Womp Womp.";
+            outcome.textContent += " You lost Womp Womp.";
         }
 
         balance.textContent = Math.floor(money);
@@ -200,3 +200,4 @@ coinFlipBtn.onclick = function () {
 
     }, 2000); // Flip for 2 seconds before revealing
 };
+
