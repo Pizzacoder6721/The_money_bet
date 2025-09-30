@@ -120,9 +120,6 @@ rollBtn.onclick = function () {
                 balance.textContent = money;
             }
 
-            
-
-            // Re-enable button
             setTimeout(() => {
                 canClick = true;
                 rollBtn.disabled = false;
@@ -158,7 +155,6 @@ coinFlipBtn.onclick = function () {
     let flipOptions = ["Heads", "Tails"];
     let flipIndex = 0;
 
-    // Start cycling text (Heads ↔ Tails)
     const flipInterval = setInterval(() => {
         outcome.textContent = flipOptions[flipIndex % 2];
         flipIndex++;
@@ -168,7 +164,6 @@ coinFlipBtn.onclick = function () {
     setTimeout(() => {
         clearInterval(flipInterval);
 
-        // Final result: 50/50
         const isWin = Math.random() < 0.5;
         const finalResult = isWin ? "Heads" : "Tails";
         outcome.textContent = `It landed on ${finalResult}!`;
@@ -205,4 +200,3 @@ coinFlipBtn.onclick = function () {
 
     }, 2000); // Flip for 2 seconds before revealing
 };
-
