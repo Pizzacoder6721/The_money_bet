@@ -1,9 +1,9 @@
 body{
     font-family: Verdana;
-    text-align: center;
 }
 #balance{
     font-size: 2em;
+    text-align: center;
 }
 #rollBtn{
     background-color: hsl(0, 0%, 76%);
@@ -11,17 +11,21 @@ body{
     padding: 5px; 25px;
     border-radius: 5px;
     cursor: pointer
+    text-align: center;
 }
 .numLabels{
     font-size: 3em;
+    text-align: center;
 }
 #outcome{
     font-size: 2em;
+    text-align: center;
 }
 #betAmount {
     font-size: 1.2em;
     padding: 2px;
     width: 80px;
+    text-align: center;
     text-align: center;
 
 }
@@ -32,5 +36,7 @@ body{
     padding: 5px 20px;
     border-radius: 5px;
     cursor: pointer;
+    text-align: right;
 }
+
 
