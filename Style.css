@@ -7,19 +7,19 @@ body {
 
 #rollBtn {
     background-color: hsl(0, 0%, 76%);
-    font-size: 3em;
+    font-size: 5em;
     padding: 5px 25px;
     border-radius: 5px;
     cursor: pointer;
 }
 .numLabels {
-    font-size: 3em;
+    font-size: 5em;
 }
 #outcome {
-    font-size: 3em;
+    font-size: 5em;
 }
 #betAmount {
-    font-size: 2em;
+    font-size: 4em;
     padding: 2px;
     width: 80px;
 }
@@ -29,10 +29,11 @@ body {
 }
 #coinFlipBtn {
     background-color: hsl(0, 0%, 76%);
-    font-size: 3em;
+    font-size: 5em;
     padding: 5px 20px;
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 
