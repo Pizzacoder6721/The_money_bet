@@ -7,7 +7,7 @@ body {
 
 #rollBtn {
     background-color: hsl(0, 0%, 76%);
-    font-size: 5em;
+    font-size: 20em;
     padding: 5px 25px;
     border-radius: 5px;
     cursor: pointer;
@@ -34,6 +34,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 
 
