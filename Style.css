@@ -1,22 +1,21 @@
-body{
+body {
     font-family: Verdana;
     text-align: center;
-
 }
-#balance{
+#balance {
     font-size: 2em;
-}
-#rollBtn{
+
+#rollBtn {
     background-color: hsl(0, 0%, 76%);
     font-size: 3em;
-    padding: 5px; 25px;
+    padding: 5px 25px;
     border-radius: 5px;
-    cursor: pointer
+    cursor: pointer;
 }
-.numLabels{
+.numLabels {
     font-size: 3em;
 }
-#outcome{
+#outcome {
     font-size: 2em;
 }
 #betAmount {
@@ -28,7 +27,6 @@ body{
     text-align: right;
     padding-right: 20px;
 }
-
 #coinFlipBtn {
     background-color: hsl(0, 0%, 76%);
     font-size: 2em;
@@ -36,3 +34,4 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }
+
