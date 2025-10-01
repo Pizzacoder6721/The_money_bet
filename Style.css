@@ -7,8 +7,8 @@ body{
 }
 #rollBtn{
     background-color: hsl(0, 0%, 76%);
-    font-size: 3em;
-    padding: 5px; 25px;
+    font-size: 4em;
+    padding: 7px; 28px;
     border-radius: 5px;
     cursor: pointer
 }
@@ -27,6 +27,7 @@ body{
 }
 #coinDiv{
     text-align: right;
+    margin: 30px;
 }
 #coinFlipBtn {
     background-color: hsl(0, 0%, 76%);
@@ -35,4 +36,5 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }
+
 
