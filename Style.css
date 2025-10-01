@@ -1,5 +1,7 @@
 body{
     font-family: Verdana;
+    text-align: center;
+
 }
 #balance{
     font-size: 2em;
@@ -29,8 +31,4 @@ body{
     padding: 5px 20px;
     border-radius: 5px;
     cursor: pointer;
-    text-align: right;
 }
-
-
-
