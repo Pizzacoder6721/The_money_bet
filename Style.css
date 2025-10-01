@@ -16,10 +16,10 @@ body {
     font-size: 3em;
 }
 #outcome {
-    font-size: 2em;
+    font-size: 3em;
 }
 #betAmount {
-    font-size: 1.2em;
+    font-size: 2em;
     padding: 2px;
     width: 80px;
 }
@@ -29,9 +29,10 @@ body {
 }
 #coinFlipBtn {
     background-color: hsl(0, 0%, 76%);
-    font-size: 2em;
+    font-size: 3em;
     padding: 5px 20px;
     border-radius: 5px;
     cursor: pointer;
 }
+
 
