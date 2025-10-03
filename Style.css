@@ -33,7 +33,7 @@ body{
     margin-left: 0px;
     position: relative;
       top: 20px;
-      left: 30px;
+      left: 100px;
 }
 #coinFlipBtn {
     background-color: hsl(0, 0%, 76%);
@@ -42,6 +42,7 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 
 
