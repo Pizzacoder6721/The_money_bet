@@ -26,7 +26,7 @@ body{
 
 }
 #coinDiv{
-    text-align: right;
+    position: relative;
     margin-right: 0px;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -36,12 +36,16 @@ body{
     left: 1px;
 }
 #coinFlipBtn {
+    position: absolute;
+    left: 150px;
+    top: 100px;
     background-color: hsl(0, 0%, 76%);
     font-size: 3em;
     padding: 5px 20px;
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 
 
